@@ -13,5 +13,4 @@ const ll _LLINF = std::numeric_limits<ll>::max();           // is 2^63 - 1 for 6
 const ll _LLMINF = std::numeric_limits<ll>::min();          // is -2^63
 const double _EPS = std::numeric_limits<double>::epsilon(); // is 2^52 which is approx 2.22e-16
 
-
 #endif

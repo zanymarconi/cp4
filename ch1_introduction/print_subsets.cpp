@@ -13,6 +13,7 @@ void print_subsets(int N) {
         }
         printf("}\n");
     }
+    printf("Total subsets: %d\n", (1 << N));
 }
 
 int main() {

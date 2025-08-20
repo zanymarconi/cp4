@@ -3,10 +3,12 @@
 
 #include <limits>
 #include <cmath>
+#include <tuple>
+#include <cstdio>
 
 // Common data type definitions
 typedef long long ll; 
-typedef tuple<int, int, int> tiii;                          // Tuple of three integers
+typedef std::tuple<int, int, int> tiii;                     // Tuple of three integers
 
 // Shortcuts for common constants
 const int _INF = std::numeric_limits<int>::max();           // is 2^31 - 1 for 32-bits wide
@@ -17,5 +19,8 @@ const double _EPS = std::numeric_limits<double>::epsilon(); // is 2^52 which is 
 
 // Constants for mathematical operations
 const double _PI = M_PI;                                    // Pi constant
+
+// Least Significant One bit
+#define LSOne(x) ((x) & -(x))                               // Returns the least significant bit of x
 
 #endif

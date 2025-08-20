@@ -13,6 +13,11 @@ void print_limits() {
 
     cout << "Double limits: " << endl;
     cout << "Machine epsilon for double (_EPS): " << _EPS << endl;
+    printf("Machine epsilon (_EPS) in fixed notation: %.20f\n", _EPS);
+
+    cout << "Mathematical constant: " << endl;
+    printf("Pi constant (_PI) in fixed notation: %.9f\n", _PI);
+    printf("Pi constant (_PI) in scientific notation: %.9e\n", _PI);
 }
 
 int main() {

@@ -1,14 +1,20 @@
 #ifndef PDDEF_H
 #define PDDEF_H
 
+// #include <bits/stdc++.h>                                 // This is a common header in competitive programming, 
+                                                            // but we will include only necessary headers
+
 #include <limits>
 #include <cmath>
 #include <tuple>
 #include <cstdio>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
 // Common data type definitions
 typedef long long ll; 
-typedef std::tuple<int, int, int> tiii;                     // Tuple of three integers
+typedef std::tuple<int, int, int> iii;                      // Tuple of three integers
 
 // Shortcuts for common constants
 const int _INF = std::numeric_limits<int>::max();           // is 2^31 - 1 for 32-bits wide

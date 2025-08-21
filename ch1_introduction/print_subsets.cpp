@@ -17,6 +17,7 @@ void print_subsets(int N) {
 }
 
 int main() {
+    cout << "Subsets of set {0, 1, 2, 3, 4}:" << endl;
     print_subsets(5);
     return 0;
 }

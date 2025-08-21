@@ -10,7 +10,7 @@ using namespace std;
     Days elapsed since 2010-08-09: 5491 days
     Weekday of the past date: Mon
 */
-void days_elapsed_and_wod(chrono::year_month_day past_date) {
+void days_elapsed_and_wod(const chrono::year_month_day &past_date) {
     cout << "Past date: " << past_date << endl;
 
     chrono::year_month_day today = chrono::year_month_day{chrono::floor<chrono::days>(chrono::system_clock::now())};

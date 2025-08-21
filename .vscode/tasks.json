@@ -10,6 +10,7 @@
                 "-g",
                 "${file}",
                 "-I${workspaceFolder}/lib",
+                "-std=c++20",
                 "-o",
                 "/Users/prakhardhama/Github/cp4/.build/${relativeFileDirname}/${fileBasenameNoExtension}"
             ],

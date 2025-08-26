@@ -22,15 +22,15 @@ int main() {
     tree.insert(5);
     tree.insert(7);
 
-    // Find the 2nd smallest element (0-based index)
-    cout << "2nd smallest element: " << *tree.find_by_order(2) << endl;
+    cout << "3rd smallest element: " << *tree.find_by_order(2) << endl;  // 0-based indexing
+    cout << "Number of elements less than 5: " << tree.order_of_key(5) << endl;    
 
     tree.erase(3);
     tree.insert(9);
 
-    // Count elements less than 5
-    cout << "Number of elements less than 5: " << tree.order_of_key(5) << endl;
-    cout << "2nd smallest element after deletion: " << *tree.find_by_order(2) << endl;
+    cout << "3rd smallest element after deletion: " << *tree.find_by_order(2) << endl;  // O(log n) select operation
+    cout << "Number of elements less than 5: " << tree.order_of_key(5) << endl;         // O(log n) rank operation
+    cout << "Number of elements less than 8: " << tree.order_of_key(8) << endl;  
 
     return 0;
 }

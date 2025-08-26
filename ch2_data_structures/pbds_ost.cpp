@@ -26,6 +26,7 @@ int main() {
     cout << "Number of elements less than 5: " << tree.order_of_key(5) << endl;    
 
     tree.erase(3);
+    tree.insert(1); // Duplicate insert, will be ignored
     tree.insert(9);
 
     cout << "3rd smallest element after deletion: " << *tree.find_by_order(2) << endl;  // O(log n) select operation

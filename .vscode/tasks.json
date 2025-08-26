@@ -2,11 +2,9 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: clang++ build active file",
-            "command": "/usr/bin/clang++",
+            "label": "C/C++: g++ build active file",
+            "command": "/opt/homebrew/Cellar/gcc/15.1.0/bin/g++-15",
             "args": [
-                "-fcolor-diagnostics",
-                "-fansi-escape-codes",
                 "-g",
                 "${file}",
                 "-I${workspaceFolder}/lib",

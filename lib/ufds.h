@@ -23,7 +23,7 @@ public:
     int findSet(int i) { return (p[i] == i) ? i : (p[i] = findSet(p[i])); } // O(1) amortized by path compression
     bool isSameSet(int i, int j) { return findSet(i) == findSet(j); }
     int numDisjointSets() { return numSets; }
-    int sizeOfSet(int i) { return setSize[findSet(i)]; } // Optional: any feature can be added
+    int sizeOfSet(int i) { return setSize[findSet(i)]; } // Optional: any feature of the set can be added
 
     void unionSet(int i, int j) // O(1) amortized by union by rank heuristic
     {

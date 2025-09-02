@@ -77,7 +77,7 @@ public:
         N = (int)A.size();
         st.assign(4 * N, -1); // 4*N > 2ˆceil(log2(N))
         lazy.assign(4 * N, -1);
-        build(1, 0, N - 1);
+        build(1, 0, N - 1); // O(N)
     }
 
     int rmq(int i, int j) { return rmq(1, 0, N - 1, i, j); } // O(log N)

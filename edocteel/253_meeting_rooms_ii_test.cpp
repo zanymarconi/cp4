@@ -27,7 +27,7 @@ public:
             for (const auto& interval : intervals) {
                 printf("[%d,%d] ", interval[0], interval[1]);
             }
-            printf("\n=> Expected: %d, Got: %d\n\n", expected, result);
+            printf("=> Expected: %d, Got: %d\n", expected, result);
             assert(result == expected);
         }
         printf("All sample test cases passed!\n");
@@ -38,7 +38,7 @@ public:
         vector<vector<int>> largeIntervals;
         const int N = 1e5 + 3;
         for (int i = 0; i < N; ++i) {
-            int start = rand() % 100003;
+            int start = rand() % 100000;
             int end = start + (rand() % 1000) + 1; // ensure end > start
             largeIntervals.push_back({start, end});
         }

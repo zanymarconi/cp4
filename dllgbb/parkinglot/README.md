@@ -18,4 +18,4 @@ Below are the non-functional requirements:
 
  ### Class Diagram
 
- ![Parking Lot Class Diagram](https://drive.google.com/file/d/1l3KR37RP-N0y8q5ih5rOFAoRgK3Ss1s0/ "Parking Lot")
+ ![Parking Lot Class Diagram](https://drive.google.com/uc?export=view&id=1l3KR37RP-N0y8q5ih5rOFAoRgK3Ss1s0 "Parking Lot")

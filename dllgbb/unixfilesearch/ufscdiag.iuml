@@ -1,0 +1,56 @@
+@startuml
+class FileSearch {
+    + vector<shared_ptr<File>> search(shared_ptr<File> root, FileSearchCriteria)
+}
+FileSearch --> FileSearchCriteria : evaluates
+FileSearch --> File : traverses
+
+class File {
+    -string name
+    -string owner
+    - long long size
+    - vector<shared_ptr<File>> children
+    + addChild(shared_ptr<File> child)
+}
+File  o-- File: 0..*
+
+class FileSearchCriteria {
+    - Predicate predicate
+    + isMatch(shared_ptr<File>) : bool
+}
+FileSearchCriteria --> Predicate
+
+abstract class Predicate {
+    + isMatch() : bool
+}
+
+class SimplePredicate {
+    - AttributeType attribute
+    - AttributeType target
+    - OperatorType operator
+    + isMatch(file) : bool
+}
+
+abstract class CompositePredicate {
+}
+
+class AndPredicate {
+    - vector<shared_ptr<Predicate>> predicates
+    + isMatch() : bool
+}
+class OrPredicate {
+    - vector<shared_ptr<Predicate>> predicates
+    + isMatch() : bool
+}
+class NotPredicate {
+    - shared_ptr<Predicate> predicate
+    + isMatch() : bool
+}
+AndPredicate ..|> CompositePredicate : implements
+OrPredicate ..|> CompositePredicate : implements
+NotPredicate ..|> CompositePredicate : implements
+
+SimplePredicate ..-|> Predicate : implements
+CompositePredicate ..-|> Predicate : extends
+
+@enduml

@@ -5,6 +5,13 @@ class FileSearch {
 FileSearch --> FileSearchCriteria : evaluates
 FileSearch --> File : traverses
 
+enum AttributeType {
+    NAME
+    OWNER
+    SIZE
+    IS_DIRECTORY
+}
+
 class File {
     -string name
     -string owner

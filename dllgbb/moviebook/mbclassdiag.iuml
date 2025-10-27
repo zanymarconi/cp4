@@ -2,14 +2,16 @@
 class MovieBookingSystem {
     - vector<Movie> movies
     - vector<Cinema> cinemas
-    - ScreeningManager screeningManager
+    - unique_ptr<ScreeningManager> screeningManager
     + bookTicket()
+    + getAvailableSeats()
 }
 MovieBookingSystem --> ScreeningManager
 MovieBookingSystem --> Cinema
 
 class Order {
     - vector<Ticket> tickets
+    + getTotalPrice()
 }
 Order "1" *-- "many" Ticket: has a
 
@@ -31,6 +33,7 @@ Ticket --> Screening
 class Cinema {
     - string name
     - map<string, Room> roomsByNumber
+    + addRoom()
 }
 Cinema "1" *-- "many" Room: have a
 
@@ -59,6 +62,7 @@ class Layout {
     - map<string, Seat> seatByNumber
     + addSeat()
     + getSeat() // overloaded
+    + getAllSeats()
 }
 Layout "1" --> "many" Seat: has
 

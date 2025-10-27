@@ -3,16 +3,8 @@ using namespace std;
 
 class Layout {
 public:
-    Layout(const string& layoutName, int rows) : layoutName(layoutName) {
+    explicit Layout(const string& layoutName, int rows) : layoutName(layoutName) {
         seats.assign(rows, vector<shared_ptr<Seat>>());
-    }
-
-    shared_ptr<Seat> getSeatByNumber(const string& seatNumber) const {
-        auto it = seatMap.find(seatNumber);
-        if (it != seatMap.end()) {
-            return it->second;
-        }
-        return nullptr; // Seat not found
     }
 
     shared_ptr<Seat> getSeatByPosition(int row, int col) const {
@@ -25,7 +17,6 @@ public:
     void addSeatInRow(int row, shared_ptr<Seat> seat) {
         if (row >= 0 && row < seats.size()) {
             seats[row].push_back(seat);
-            seatMap[seat->getSeatNumber()] = seat;
         }
     }
 
@@ -40,8 +31,12 @@ public:
         return allSeats;
     }
 
+    // Get seats object constant reference
+    const vector<vector<shared_ptr<Seat>>>& getSeats() const {
+        return seats;
+    }
+
 private:
     string layoutName;
     vector<vector<shared_ptr<Seat>>> seats; // Dynamic 2D grid of seats
-    unordered_map<string, shared_ptr<Seat>> seatMap; // Map for quick seat lookup
 };

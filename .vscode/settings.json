@@ -44,6 +44,22 @@
         "unordered_set": "cpp",
         "flat_map": "cpp",
         "flat_set": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "__hash_table": "cpp",
+        "__split_buffer": "cpp",
+        "__tree": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "queue": "cpp",
+        "regex": "cpp",
+        "span": "cpp",
+        "stack": "cpp",
+        "valarray": "cpp",
+        "vector": "cpp",
+        "rope": "cpp",
+        "slist": "cpp",
+        "ranges": "cpp",
+        "stacktrace": "cpp"
     }
 }

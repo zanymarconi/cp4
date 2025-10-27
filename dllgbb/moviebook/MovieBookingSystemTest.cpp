@@ -10,6 +10,7 @@ class MovieBookingSystemTest : public MovieBookingSystem {
         // Create a movie
         auto movie = std::make_shared<Movie>("Inception", /* durationInMinutes= */ 148);
         bookingSystem.addMovie(movie);
+        printf("Created movie: %s\n", movie->getTitle().c_str());
 
         // Create a cinema with a room
         auto cinema = std::make_shared<Cinema>("CinePlex Downtown");
@@ -17,43 +18,44 @@ class MovieBookingSystemTest : public MovieBookingSystem {
         auto room = std::make_shared<Room>("Room 1", layout);
         cinema->addRoom(room);
         bookingSystem.addCinema(cinema);
+        printf("Created cinema: %s with room: %s\n", cinema->getName().c_str(), room->getRoomName().c_str());
+
         // Add seats to the layout
         for (int i = 0; i < 5; ++i) {       // 5 rows
-            for (int j = 0; j < 10; ++j) {  // 10 seats per row
+            for (int j = 0; j < ((i == 0)? 3: ((i == 1)? 7: 10)); ++j) {  // 3 + 7 + 10*3 = 40 seats
                 string seatNumber = to_string(i) + "-" + to_string(j);
                 auto seat = std::make_shared<Seat>(seatNumber);
                 layout->addSeatInRow(i, seat);
             }
         }
+        printf("Added seats to layout: %s\n", layout->getAllSeats().size() > 0 ? "Success" : "Failure");
 
         // Set pricing strategies for some seats
-        auto normalRate = std::make_shared<NormalRate>(10.0);
-        auto premiumRate = std::make_shared<PremiumRate>(15.0);
         auto vipRate = std::make_shared<VIPRate>(25.0);
+        auto premiumRate = std::make_shared<PremiumRate>(15.0);
+        auto normalRate = std::make_shared<NormalRate>(10.0);
 
-        // Set pricing for front rows (premium)
-        for (int i = 0; i < 2; ++i) {
-            for (int j = 0; j < 10; ++j) {
-                auto seat = layout->getSeatByPosition(i, j);
-                if (seat)
-                    seat->setPricingStrategy(premiumRate);
-            }
+        // Set pricing for back row (VIP)
+        for (int j = 0; j < layout->getSeats()[0].size(); ++j) {
+            auto seat = layout->getSeatByPosition(0, j);
+            if (seat)
+                seat->setPricingStrategy(vipRate);
         }
 
-        // Set pricing for middle rows (normal)
-        for (int i = 2; i < 4; ++i) {
-            for (int j = 0; j < 10; ++j) {
+        // Set pricing for premium seats in back row
+        for (int j = 0; j < layout->getSeats()[1].size(); ++j) {
+            auto seat = layout->getSeatByPosition(1, j);
+            if (seat)
+                seat->setPricingStrategy(premiumRate);
+        }
+
+        // Set pricing for rows (normal)
+        for (int i = 2; i < 5; ++i) {
+            for (int j = 0; j < layout->getSeats()[i].size(); ++j) {
                 auto seat = layout->getSeatByPosition(i, j);
                 if (seat)
                     seat->setPricingStrategy(normalRate);
             }
-        }
-
-        // Set pricing for back row (VIP)
-        for (int j = 0; j < 10; ++j) {
-            auto seat = layout->getSeatByPosition(4, j);
-            if (seat)
-                seat->setPricingStrategy(vipRate);
         }
 
         // Create a screening
@@ -67,9 +69,9 @@ class MovieBookingSystemTest : public MovieBookingSystem {
         // Book some tickets
         printf("Booking tickets...\n");
 
-        auto seat1 = layout->getSeatByNumber("0-5");  // Premium seat
-        auto seat2 = layout->getSeatByNumber("2-3");  // Normal seat
-        auto seat3 = layout->getSeatByNumber("4-8");  // VIP seat
+        auto seat1 = layout->getSeatByPosition(0, 2);  // VIP seat
+        auto seat2 = layout->getSeatByPosition(1, 6);  // Premium seat
+        auto seat3 = layout->getSeatByPosition(4, 9);  // Normal seat
 
         bookingSystem.bookTicket(screening, seat1);
         bookingSystem.bookTicket(screening, seat2);
@@ -83,7 +85,7 @@ class MovieBookingSystemTest : public MovieBookingSystem {
         // Check available seats
         auto availableSeats = bookingSystem.getAvailableSeats(screening);
         printf("Available seats after booking %d tickets: %zu\n", actualTickets, availableSeats.size());
-        assert(availableSeats.size() == (50 - actualTickets));  // 50 total seats - booked tickets
+        assert(availableSeats.size() == (40 - actualTickets));  // 50 total seats - booked tickets
 
         // Create an order
         auto order = std::make_shared<Order>(getCurrentEpochMillis());
@@ -110,6 +112,7 @@ class MovieBookingSystemTest : public MovieBookingSystem {
 
 int main() {
     MovieBookingSystemTest mbsTest;
+    printf("Starting Movie Booking System Tests...\n");
     mbsTest.runTests();
     return 0;
 }

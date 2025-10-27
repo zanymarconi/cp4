@@ -38,81 +38,10 @@ Design a movie booking system.
 
 ![Movie Booking System Class Diagram](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/zanymarconi/cp4/refs/heads/main/dllgbb/moviebook/mbclassdiag.iuml)
 
-```plantuml
-@startuml
-class MovieBookingSystem {
-    - vector<Movie> movies
-    - vector<Cinema> cinemas
-    - ScreeningManager screeningManager
-    + bookTicket()
-}
-MovieBookingSystem --> ScreeningManager
-MovieBookingSystem --> Cinema
-
-class Order {
-    - vector<Ticket> tickets
-}
-Order "1" *-- "many" Ticket: has a
-
-class ScreeningManager {
-    - map<string, vector<Screening>> screeningsByMovie
-    - map<string, vector<Ticket>> ticketsByScreeningId
-    + getScreeningForMovie()
-    + getAvailableSeatsForScreening()
-}
-ScreeningManager --> Screening
-
-class Ticket {
-    - Screening screening
-    - Seat seat
-    - double price
-}
-Ticket --> Screening
-
-class Cinema {
-    - string name
-    - map<string, Room> roomsByNumber
-}
-Cinema "1" *-- "many" Room: have a
-
-class Screening {
-    - string screeningId
-    - Movie movie
-    - Room room
-    - long long startMillis
-}
-Screening --> Movie
-Screening --> Room
-
-class Movie {
-    - string title
-    - int durationInMinutes
-}
-
-class Room {
-    - string roomNumber
-    - Layout layout
-}
-Room --> Layout
-
-class Layout {
-    - vector<vector<Seat>> seatByPosition
-    - map<string, Seat> seatByNumber
-    + addSeat
-    + getSeat // overloaded
-}
-Layout "1" --> "many" Seat: has
-
-class Seat {
-    - string seatNumber
-    - PricingStrategy pricing
-}
-Seat --> PricingStrategy
-
-abstract PricingStrategy {
-    + double getPrice()
-}
-class NormalRate implements PricingStrategy
-class PremiumRate implements PricingStrategy
-class VIPRate implements PricingStrategy
-@enduml
+#### View PlantUML
+ - VSCode Readme.md Preview: Install VSCode extensions - PlantUML (jebbs) & Markdown Plantuml Preview (myml)
+ - VSCode .iuml Preview: Mac - Install Java & GraphViz
+ - Github Readme.md: Use image URL 
+   ```
+   ![Movie Booking System Class Diagram](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/zanymarconi/cp4/refs/heads/main/dllgbb/moviebook/mbclassdiag.iuml)
+   ```

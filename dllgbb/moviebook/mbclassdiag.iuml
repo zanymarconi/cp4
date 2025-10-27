@@ -3,8 +3,8 @@ class MovieBookingSystem {
     - vector<Movie> movies
     - vector<Cinema> cinemas
     - unique_ptr<ScreeningManager> screeningManager
-    + bookTicket()
-    + getAvailableSeats()
+    + bookTicket(screening, seat)
+    + getAvailableSeats(screening)
 }
 MovieBookingSystem --> ScreeningManager
 MovieBookingSystem --> Cinema
@@ -18,8 +18,8 @@ Order "1" *-- "many" Ticket: has a
 class ScreeningManager {
     - map<string, vector<Screening>> screeningsByMovie
     - map<string, vector<Ticket>> ticketsByScreeningId
-    + getScreeningForMovie()
-    + getAvailableSeatsForScreening()
+    + getScreeningsByMovieTitle(string)
+    + getAvailableSeatsForScreening(screening)
 }
 ScreeningManager --> Screening
 
@@ -33,7 +33,7 @@ Ticket --> Screening
 class Cinema {
     - string name
     - map<string, Room> roomsByNumber
-    + addRoom()
+    + addRoom(room)
 }
 Cinema "1" *-- "many" Room: have a
 

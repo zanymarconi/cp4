@@ -57,8 +57,8 @@ Room --> Layout
 class Layout {
     - vector<vector<Seat>> seatByPosition
     - map<string, Seat> seatByNumber
-    + addSeat
-    + getSeat // overloaded
+    + addSeat()
+    + getSeat() // overloaded
 }
 Layout "1" --> "many" Seat: has
 

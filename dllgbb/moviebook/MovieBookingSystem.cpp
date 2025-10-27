@@ -8,6 +8,9 @@ public:
 
     // Book a ticket for a specific screening and seat
     shared_ptr<Ticket> bookTicket(shared_ptr<Screening> screening, shared_ptr<Seat> seat) {
+        // Optimistic locking 
+        lock_guard<mutex> lock(bookMutex);
+
         // Check if the seat is available
         auto availableSeats = getAvailableSeats(screening);
         auto it = find_if(availableSeats.begin(), availableSeats.end(),
@@ -63,4 +66,6 @@ private:
     vector<shared_ptr<Movie>> movies;
     vector<shared_ptr<Cinema>> cinemas;
     unique_ptr<ScreeningManager> screeningManager;
+
+    mutable mutex bookMutex;
 };

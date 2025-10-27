@@ -36,7 +36,7 @@ Design a movie booking system.
 
 ### Class Diagram
 
-![Movie Booking System Class Diagram](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/zanymarconi/cp4/tree/main/dllgbb/moviebook/mbclassdiag.iuml)
+![Movie Booking System Class Diagram](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/zanymarconi/cp4/refs/heads/main/dllgbb/moviebook/mbclassdiag.iuml)
 
 ```plantuml
 @startuml

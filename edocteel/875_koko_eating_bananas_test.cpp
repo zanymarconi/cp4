@@ -1,95 +1,61 @@
+#define CATCH_CONFIG_MAIN
+#include <catch.hpp>
 #include "875_koko_eating_bananas.cpp"
 using namespace std;
 
-class KokoBananas875Test: private KokoBananas875 {
-public:
-    void runTests() {
-        string line;
-        istringstream iss(scenarios);
-        int testCase = 0, size;
-        while(iss >> size) {
-            vector<int> piles;
-            int pile;
-            while (size > 0) { 
-                iss >> pile;
-                piles.push_back(pile);
-                --size;
-            }
-            int hoursAvailable, expectedMinSpeed;
-            iss >> hoursAvailable >> expectedMinSpeed;
-            int calculatedSpeed = minEatingSpeed(piles, hoursAvailable);
+TEST_CASE("Single large pile", "[koko]") {
+    KokoBananas875 kokoTest;
+    vector<int> piles = {312884470};
+    REQUIRE(kokoTest.minEatingSpeed(piles, 312884469) == 2);
+}
 
-            // Debugging
-            // printf("Piles: "); for (auto p: piles) printf("%d ", p); 
-            // printf("\nHours Available: %d\n", hoursAvailable);
-            // printf("Actual %d and expected %d\n", calculatedSpeed, expectedMinSpeed);
+TEST_CASE("Small piles with zero", "[koko]") {
+    KokoBananas875 kokoTest;
+    vector<int> piles = {2, 0, 4};
+    REQUIRE(kokoTest.minEatingSpeed(piles, 3) == 2);
+}
 
-            printf("Test %d: %s\n", ++testCase, 
-                (expectedMinSpeed == calculatedSpeed)? "PASS": "FAIL");
-            assert(expectedMinSpeed == calculatedSpeed);
-        }
-        printf("All Tests Scenarios Passed!\n\n");
-    }
+TEST_CASE("Must eat max pile", "[koko]") {
+    KokoBananas875 kokoTest;
+    vector<int> piles = {3, 6, 7, 11};
+    REQUIRE(kokoTest.minEatingSpeed(piles, 4) == 11);
+}
 
-    // N * log(MAX(pile))
-    void loadTest() {
-        int size = 1e6 + 3;
-        int pileMax = 1e9 + 7;
-        vector<int> piles(size);
-        for (int i = 0; i < size; ++i)
-            piles[i] = pileMax % size;
-        int hoursAvailable = size + rand() % size;
-        int calculatedSpeed = minEatingSpeed(piles, hoursAvailable);
+TEST_CASE("More time available", "[koko]") {
+    KokoBananas875 kokoTest;
+    vector<int> piles = {3, 6, 7, 11};
+    REQUIRE(kokoTest.minEatingSpeed(piles, 6) == 6);
+}
 
-        printf("Calculated speed %d for %d banans in %d hours\n", 
-            calculatedSpeed, size, hoursAvailable);
-            printf("Load Test Passed!\n");
-        assert(calculatedSpeed == 997010); // MAGIC!
-    }
+TEST_CASE("Plenty of time", "[koko]") {
+    KokoBananas875 kokoTest;
+    vector<int> piles = {3, 6, 7, 11};
+    REQUIRE(kokoTest.minEatingSpeed(piles, 8) == 4);
+}
 
-private:
-    string scenarios = R"(
-        1
-        312884470
-        312884469
-        2
+TEST_CASE("Empty piles", "[koko]") {
+    KokoBananas875 kokoTest;
+    vector<int> piles = {};
+    REQUIRE(kokoTest.minEatingSpeed(piles, 42) == 0);
+}
 
-        3
-        2 0 4
-        3
-        2
+TEST_CASE("Not enough time", "[koko]") {
+    KokoBananas875 kokoTest;
+    vector<int> piles = {1, 1};
+    REQUIRE(kokoTest.minEatingSpeed(piles, 1) == -1);
+}
 
-        4
-        3 6 7 11
-        4
-        11
-
-        4
-        3 6 7 11
-        6
-        6
-
-        4
-        3 6 7 11
-        8
-        4
-
-        0
-        42
-        0
-
-        2
-        1 1
-        1
-        -1
-    )";
-};
-
-int main() {
-    KokoBananas875Test test;
-    test.runTests();
+TEST_CASE("Load test", "[koko][slow]") {
+    KokoBananas875 kokoTest;
+    int size = 1e6 + 3;
+    int pileMax = 1e9 + 7;
+    vector<int> piles(size);
     srand(time(0));
-    for (int i = 0; i < 5; ++i)
-        test.loadTest();
-    return 0;
+    for (int i = 0; i < size; ++i)
+        piles[i] = rand() % pileMax;
+    int hoursAvailable = size + rand() % size;
+    int minSpeed = kokoTest.minEatingSpeed(piles, hoursAvailable);
+    printf("Load Test with %d piles within %d hours required at least %d /hr speed\n",
+        size, hoursAvailable, minSpeed);
+    REQUIRE(minSpeed > 1);
 }

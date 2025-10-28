@@ -63,5 +63,8 @@
         "stacktrace": "cpp",
         "expected": "cpp",
         "chrono": "cpp"
-    }
+    },
+    "testMate.cpp.test.executables": "**/*test*",
+    "testMate.cpp.log.logpanel": true,
+    "testMate.cpp.discovery.loadOnStartup": true
 }

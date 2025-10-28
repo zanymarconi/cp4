@@ -3,49 +3,49 @@
 #include "875_koko_eating_bananas.cpp"
 using namespace std;
 
-TEST_CASE("Single large pile", "[koko]") {
+TEST_CASE("Single large pile", "[edocteel][675]") {
     KokoBananas875 kokoTest;
     vector<int> piles = {312884470};
     REQUIRE(kokoTest.minEatingSpeed(piles, 312884469) == 2);
 }
 
-TEST_CASE("Small piles with zero", "[koko]") {
+TEST_CASE("Small piles with zero", "[edocteel][675]") {
     KokoBananas875 kokoTest;
     vector<int> piles = {2, 0, 4};
     REQUIRE(kokoTest.minEatingSpeed(piles, 3) == 2);
 }
 
-TEST_CASE("Must eat max pile", "[koko]") {
+TEST_CASE("Must eat max pile", "[edocteel][675]") {
     KokoBananas875 kokoTest;
     vector<int> piles = {3, 6, 7, 11};
     REQUIRE(kokoTest.minEatingSpeed(piles, 4) == 11);
 }
 
-TEST_CASE("More time available", "[koko]") {
+TEST_CASE("More time available", "[edocteel][675]") {
     KokoBananas875 kokoTest;
     vector<int> piles = {3, 6, 7, 11};
     REQUIRE(kokoTest.minEatingSpeed(piles, 6) == 6);
 }
 
-TEST_CASE("Plenty of time", "[koko]") {
+TEST_CASE("Plenty of time", "[edocteel][675]") {
     KokoBananas875 kokoTest;
     vector<int> piles = {3, 6, 7, 11};
     REQUIRE(kokoTest.minEatingSpeed(piles, 8) == 4);
 }
 
-TEST_CASE("Empty piles", "[koko]") {
+TEST_CASE("Empty piles", "[edocteel][675]") {
     KokoBananas875 kokoTest;
     vector<int> piles = {};
     REQUIRE(kokoTest.minEatingSpeed(piles, 42) == 0);
 }
 
-TEST_CASE("Not enough time", "[koko]") {
+TEST_CASE("Not enough time", "[edocteel][675]") {
     KokoBananas875 kokoTest;
     vector<int> piles = {1, 1};
     REQUIRE(kokoTest.minEatingSpeed(piles, 1) == -1);
 }
 
-TEST_CASE("Load test", "[koko][slow]") {
+TEST_CASE("Load test", "[edocteel][675][benchmark]") {
     KokoBananas875 kokoTest;
     int size = 1e6 + 3;
     int pileMax = 1e9 + 7;

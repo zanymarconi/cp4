@@ -60,6 +60,7 @@
         "rope": "cpp",
         "slist": "cpp",
         "ranges": "cpp",
-        "stacktrace": "cpp"
+        "stacktrace": "cpp",
+        "expected": "cpp"
     }
 }

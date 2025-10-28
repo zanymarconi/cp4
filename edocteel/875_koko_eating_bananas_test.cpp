@@ -1,7 +1,7 @@
 #include "875_koko_eating_bananas.cpp"
 using namespace std;
 
-class KokoBananas875Test: public KokoBananas875 {
+class KokoBananas875Test: private KokoBananas875 {
 public:
     void runTests() {
         string line;

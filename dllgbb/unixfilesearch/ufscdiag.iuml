@@ -7,23 +7,22 @@ FileSearch --> File : traverses
 
 enum AttributeType {
     NAME
-    OWNER
     SIZE
     IS_DIRECTORY
 }
 
 class File {
     -string name
-    -string owner
     - long long size
     - vector<shared_ptr<File>> children
     + addChild(shared_ptr<File> child)
+    + extractAttribute(AttributeType) : <b>variant<...>
 }
 File  o-- File: 0..*
 
 class FileSearchCriteria {
     - Predicate predicate
-    + isMatch(shared_ptr<File>) : bool
+    + matches(shared_ptr<File>) : bool
 }
 FileSearchCriteria --> Predicate
 
@@ -31,12 +30,18 @@ abstract class Predicate {
     + isMatch() : bool
 }
 
-class SimplePredicate {
+class SimplePredicate<T> {
     - AttributeType attribute
     - AttributeType target
-    - OperatorType operator
+    - ComparisonOperator operator
     + isMatch(file) : bool
 }
+
+abstract class ComparisonOperator<T> {
+    + isMatch(T, T) : bool
+}
+SimplePredicate --* ComparisonOperator : uses
+SimplePredicate --> AttributeType
 
 abstract class CompositePredicate {
 }

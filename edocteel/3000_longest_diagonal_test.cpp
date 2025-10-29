@@ -42,3 +42,10 @@ TEST_CASE("TiedDiagonals", "[edocteel][3000]") {
     int area = test.areaOfMaxDiagonal(dimensions);
     REQUIRE(area == 552); // returns largest area
 }
+
+TEST_CASE("EmptyDimensions", "[edocteel][3000]") {
+    LongestDiagonal3000 test;
+    vector<vector<int>> dimensions;
+    int area = test.areaOfMaxDiagonal(dimensions);
+    REQUIRE(area == 0);
+}

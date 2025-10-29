@@ -35,6 +35,7 @@ vector<Court> TennisBooking::assignCourts(const vector<BookingRecord>& bookingRe
             // a booking has ended
             int releasedCourtId = courtIdByBookingId[bookingId];
             availableCourtIds.insert(releasedCourtId);
+            --currentCount;
         }
     }
 

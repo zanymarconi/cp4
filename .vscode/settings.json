@@ -62,7 +62,8 @@
         "ranges": "cpp",
         "stacktrace": "cpp",
         "expected": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "source_location": "cpp"
     },
     "testMate.cpp.test.executables": ".build/[!.]**/*test",
     "testMate.cpp.log.logpanel": true,

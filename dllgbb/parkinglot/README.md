@@ -19,3 +19,21 @@ Below are the non-functional requirements:
  ### Class Diagram
 
  ![Parking Lot Class Diagram](https://drive.google.com/uc?export=view&id=1ldamIzIlvdZYUrO_hqBsv7Ex5N4LyGZT "Parking Lot")
+
+ ### Sample PlantUML Code
+
+ ```plantuml
+ @startuml
+ abstract Vehicle
+
+ class Car {
+    - capacity
+    + getCapacity()
+ }
+
+ class Motorcycle
+ class Truck
+
+ class Car implements Vehicle
+ Motorcycle ..|> Vehicle
+ Truck ..|> Vehicle

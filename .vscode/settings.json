@@ -65,7 +65,9 @@
         "chrono": "cpp",
         "source_location": "cpp"
     },
-    "testMate.cpp.test.executables": ".build/[!.]**/*test",
+    // "testMate.cpp.test.executables": ".build/.coderunner/**/*{test,Test,TEST}*",
+    // "testMate.cpp.test.executables": ".build/[a-zA-Z0-9]?*/**/*{test,Test,TEST}*",
+    "testMate.cpp.test.executables": ".build/[!.]?*/**/*{test,Test,TEST}*",
     "testMate.cpp.log.logpanel": true,
     "testMate.cpp.discovery.loadOnStartup": true
 }

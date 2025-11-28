@@ -7,7 +7,7 @@ public class _33ReverseString {
   }
 }
 
-// Author: Prakhar Dhama
+// Author: Zany Marconi
 class Solution {
   public void reverseString(char[] s) {
     int len = s.length;

@@ -6,7 +6,7 @@ public class _977SquareArray {
     }
 }
 
-// Author: Prakhar Dhama
+// Author: Zany Marconi
 class Solution {
     public int[] sortedSquares(int[] nums) {
         int size = nums.length;

@@ -2,13 +2,13 @@ import java.util.*;
 
 public class _33ReverseString {
   public static void main(String[] args) {
-    SolutionTest solTest = new SolutionTest();
+    SolutionTest33 solTest = new SolutionTest33();
     solTest.runTestScenarios();
   }
 }
 
 // Author: Zany Marconi
-class Solution {
+class Solution33 {
   public void reverseString(char[] s) {
     int len = s.length;
 
@@ -20,7 +20,7 @@ class Solution {
   }
 }
 
-class SolutionTest extends Solution {
+class SolutionTest33 extends Solution33 {
 
   private void testOddLenList() {
     char[] str = { 'a', 'b', 'c' };

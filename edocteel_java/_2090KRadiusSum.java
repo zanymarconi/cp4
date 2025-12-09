@@ -2,12 +2,12 @@ import java.util.*;
 
 public class _2090KRadiusSum {
     public static void main(String[] args) {
-        new SolutionTest().run();
+        new SolutionTest2090().run();
     }
 }
 
 // Author: Zany Marconi
-class Solution {
+class Solution2090 {
     public int[] getAverages(int[] nums, int k) {
         int size = nums.length;
         if (size == 0)
@@ -37,7 +37,7 @@ class Solution {
     }
 }
 
-class SolutionTest extends Solution {
+class SolutionTest2090 extends Solution2090 {
     void testPositiveArray() {
         int[] nums = { 2, 3, -4, 1, 8 };
         int[] ans = getAverages(nums, 1);

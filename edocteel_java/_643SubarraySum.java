@@ -1,11 +1,11 @@
 public class _643SubarraySum {
     public static void main(String[] args) {
-        new SolutionTest().run();
+        new SolutionTest643().run();
     }
 }
 
 // Author: Zany Marconi
-class Solution {
+class Solution643 {
     public double findMaxAverage(int[] nums, int k) {
         assert k >= 0 : "k should be greater than 0";
         
@@ -27,7 +27,7 @@ class Solution {
     }
 }
 
-class SolutionTest extends Solution {
+class SolutionTest643 extends Solution643 {
     double EPS = 1e-6;
 
     void testAllNegative() {

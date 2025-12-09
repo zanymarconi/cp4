@@ -1,11 +1,11 @@
 public class _1413MinStartValue {
     public static void main(String[] args) {
-        new SolutionTest().run();
+        new SolutionTest1413().run();
     }
 }
 
 // Author: Zany Marconi
-class Solution {
+class Solution1413 {
     int minStartValue(int[] nums) {
         int size = nums.length;
         if (size == 0) return 1;
@@ -22,7 +22,7 @@ class Solution {
     }
 }
 
-class SolutionTest extends Solution {
+class SolutionTest1413 extends Solution1413 {
     void testAllNegativeNums() {
         int[] nums = {-1, -2, -3};
         int ans = minStartValue(nums);

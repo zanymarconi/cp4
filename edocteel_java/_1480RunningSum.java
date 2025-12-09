@@ -2,12 +2,12 @@ import java.util.Arrays;
 
 public class _1480RunningSum {
     public static void main(String[] args) {
-        new SolutionTest().run();
+        new SolutionTest1480().run();
     }
 }
 
 // Author: Zany Marconi
-class Solution {
+class Solution1480 {
     int[] runningSum(int[] nums) {
         int size = nums.length;
         if (size == 0) return new int[]{};
@@ -22,7 +22,7 @@ class Solution {
     }
 }
 
-class SolutionTest extends Solution {
+class SolutionTest1480 extends Solution1480 {
     void testNumsSize3() {
         int[] nums = {1, -1, 3};
         int[] ans = runningSum(nums);

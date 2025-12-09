@@ -2,12 +2,12 @@ import java.util.*;
 
 public class _1832SentencePanagram {
     public static void main(String[] args) {
-        new SolutionTest().run();
+        new SolutionTest1832().run();
     }
 }
 
 // Author: Zany Marconi
-class Solution {
+class Solution1832 {
     public boolean checkIfPangram(String sentence) {
         Map<Character, Integer> freqMap = new HashMap<>();
 
@@ -23,7 +23,7 @@ class Solution {
     }
 }
 
-class SolutionTest extends Solution {
+class SolutionTest1832 extends Solution1832 {
 
     void testPangram() {
         String sentence = "The quick brown fox jumps over a little lazy dog";

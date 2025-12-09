@@ -2,12 +2,12 @@ import java.util.*;
 
 public class _977SquareArray {
     public static void main(String[] args) {
-        new SolutionTest().run();
+        new SolutionTest977().run();
     }
 }
 
 // Author: Zany Marconi
-class Solution {
+class Solution977 {
     public int[] sortedSquares(int[] nums) {
         int size = nums.length;
         if (nums == null || size == 0)
@@ -31,7 +31,7 @@ class Solution {
     }
 }
 
-class SolutionTest extends Solution {
+class SolutionTest977 extends Solution977 {
     public void testMixedNums() {
         int[] nums = { -4, -1, 0, 3, 10 };
         int[] ans = sortedSquares(nums);
